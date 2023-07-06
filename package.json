@@ -12,7 +12,8 @@
     "release:mac": "electron-builder build --mac",
     "release:linux": "electron-builder build --linux",
     "release:all": "npm run release:win && npm run release:mac && npm run release:linux",
-    "release": "electron-builder"
+    "release": "electron-builder",
+    "postinstall": "concurrently \"cd ret && npm install\" \"cd electron && npm install\""
   },
   "files": [
     "electron/build/**/*",
