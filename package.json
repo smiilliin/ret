@@ -44,10 +44,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/wait-on": "^5.3.1",
     "concurrently": "^8.2.0",
     "cross-spawn": "^7.0.3",
     "electron": "^25.2.0",
-    "electron-builder": "^24.4.0"
+    "electron-builder": "^24.4.0",
+    "nodemon": "^2.0.22"
   },
   "dependencies": {
     "wait-on": "^7.0.1"

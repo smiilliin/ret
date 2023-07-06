@@ -1,21 +1,13 @@
 {
   "name": "electron",
+  "version": "1.0.0",
   "description": "Electron script",
+  "main": "./build/index.js",
   "scripts": {
     "dev": "nodemon -e ts --exec \"npm run build && npm run start\"",
-    "build": "tsc",
-    "start": "cd .. && electron ."
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/wait-on": "^5.3.1",
-    "nodemon": "^2.0.22"
-  },
-  "dependencies": {
-    "electron": "^25.2.0",
-    "electron-builder": "^24.4.0",
-    "wait-on": "^7.0.1"
-  }
+  "license": "ISC"
 }
