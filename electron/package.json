@@ -5,7 +5,8 @@
   "main": "./build/index.js",
   "scripts": {
     "dev": "nodemon -e ts --exec \"npm run build && npm run start\"",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "cd .. && electron ."
   },
   "keywords": [],
   "author": "",
