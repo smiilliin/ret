@@ -1,0 +1,55 @@
+{
+  "name": "ret",
+  "version": "1.0.0",
+  "description": "React Electron Typescript",
+  "main": "./electron/build/index.js",
+  "scripts": {
+    "dev:script": "concurrently \"cd ret && npm run start\" \"cd electron && npm run dev\"",
+    "build": "concurrently \"cd electron && npm run build\" \"cd ret && npm run build\"",
+    "dev": "node dev.js",
+    "start": "electron .",
+    "release:win": "npm run build && electron-builder build --win",
+    "release:mac": "npm run build && electron-builder build --win",
+    "release:linux": "npm run build && electron-builder build --win",
+    "release:all": "npm run release:win && npm run release:mac && npm run release:linux",
+    "release": "npm run build && electron-builder"
+  },
+  "files": [
+    "electron/build/**/*",
+    "ret/build/**/*"
+  ],
+  "build": {
+    "productName": "ret",
+    "directories": {
+      "output": "release/${platform}"
+    },
+    "asar": true,
+    "win": {
+      "target": "portable",
+      "icon": "icon.ico",
+      "artifactName": "${productName}.exe"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "icon.ico",
+      "artifactName": "${productName}.dmg"
+    },
+    "linux": {
+      "target": "portable",
+      "icon": "icon.ico",
+      "artifactName": "${productName}"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "cross-spawn": "^7.0.3",
+    "electron": "^25.2.0",
+    "electron-builder": "^24.4.0"
+  },
+  "dependencies": {
+    "wait-on": "^7.0.1"
+  }
+}
