@@ -1,13 +1,15 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import * as path from "path";
-import waitOn from "wait-on";
 
 let window: BrowserWindow | undefined;
 const port = process.env.DEV ? process.env.PORT : undefined;
 const devTool = false;
 
 const createMainWindow = async () => {
-  if (port) await waitOn({ resources: [`http://127.0.0.1:${port}`] });
+  if (port) {
+    const waitOn = await import("wait-on");
+    await waitOn.default({ resources: [`http://127.0.0.1:${port}`] });
+  }
 
   window = new BrowserWindow({
     width: 960,
