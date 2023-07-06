@@ -32,7 +32,7 @@ npm run start
 
 ### Release
 
-release an executable file
+release an executable file(must be builded first)
 
 based by current platform
 

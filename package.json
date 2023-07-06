@@ -8,11 +8,11 @@
     "build": "concurrently \"cd electron && npm run build\" \"cd ret && npm run build\"",
     "dev": "node dev.js",
     "start": "electron .",
-    "release:win": "npm run build && electron-builder build --win",
-    "release:mac": "npm run build && electron-builder build --win",
-    "release:linux": "npm run build && electron-builder build --win",
+    "release:win": "electron-builder build --win",
+    "release:mac": "electron-builder build --mac",
+    "release:linux": "electron-builder build --linux",
     "release:all": "npm run release:win && npm run release:mac && npm run release:linux",
-    "release": "npm run build && electron-builder"
+    "release": "electron-builder"
   },
   "files": [
     "electron/build/**/*",
