@@ -13,7 +13,7 @@
     "release:linux": "electron-builder build --linux",
     "release:all": "npm run release:win && npm run release:mac && npm run release:linux",
     "release": "electron-builder",
-    "postinstall": "cd ret && npm install && cd .. && cd electron && npm install"
+    "postinstall": "npm install && cd ret && npm install"
   },
   "files": [
     "electron/build/**/*",
