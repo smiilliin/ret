@@ -1,7 +1,7 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import * as path from "path";
 
-let mainWindow: BrowserWindow | undefined;
+let mainWindow: BrowserWindow;
 const port = process.env.DEV ? process.env.PORT : undefined;
 const devTool = false;
 
