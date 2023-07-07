@@ -4,7 +4,7 @@
   "description": "React Electron Typescript",
   "main": "./electron/build/index.js",
   "scripts": {
-    "dev:script": "concurrently \"cd ret && npm run start\" \"cd electron && npm run dev\"",
+    "dev:script": "concurrently \"cd ret && npm run start\" \"node wait.js && cd electron && npm run dev\"",
     "build": "concurrently \"cd electron && npm run build\" \"cd ret && npm run build\"",
     "dev": "node dev.js",
     "start": "electron .",

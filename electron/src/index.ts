@@ -6,11 +6,6 @@ const port = process.env.DEV ? process.env.PORT : undefined;
 const devTool = false;
 
 const createMainWindow = async () => {
-  if (port) {
-    const waitOn = await import("wait-on");
-    await waitOn.default({ resources: [`http://127.0.0.1:${port}`] });
-  }
-
   window = new BrowserWindow({
     width: 960,
     height: 540,
