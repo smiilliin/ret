@@ -5,7 +5,7 @@ A program that's integrated react, electron, and typescript.
 ## Install
 
 ```bash
-npm run postinstall
+npm run install
 ```
 
 ## Usage
