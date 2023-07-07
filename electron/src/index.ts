@@ -1,12 +1,12 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import * as path from "path";
 
-let window: BrowserWindow | undefined;
+let mainWindow: BrowserWindow | undefined;
 const port = process.env.DEV ? process.env.PORT : undefined;
 const devTool = false;
 
 const createMainWindow = async () => {
-  window = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 960,
     height: 540,
     webPreferences: {
@@ -16,16 +16,16 @@ const createMainWindow = async () => {
     },
   });
 
-  window.once("ready-to-show", () => {
-    window?.show();
+  mainWindow.once("ready-to-show", () => {
+    mainWindow?.show();
   });
 
   if (port) {
-    window.loadURL(`http://localhost:${port}`);
+    mainWindow.loadURL(`http://localhost:${port}`);
 
-    if (devTool) window.webContents.openDevTools();
+    if (devTool) mainWindow.webContents.openDevTools();
   } else {
-    window.loadFile(path.join(__dirname, "../../ret/build/index.html"));
+    mainWindow.loadFile(path.join(__dirname, "../../ret/build/index.html"));
   }
 
   ipcMain.on("helloWorld", (event, text: string) => {
@@ -42,7 +42,7 @@ app.on("window-all-closed", () => {
 });
 
 app.on("activate", (): void => {
-  if (window === null) {
+  if (mainWindow === null) {
     createMainWindow();
   }
 });
