@@ -1,7 +1,7 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import * as path from "path";
 
-let mainWindow: BrowserWindow;
+let mainWindow: BrowserWindow | undefined;
 const port = process.env.DEV ? process.env.PORT : undefined;
 const devTool = false;
 
@@ -16,10 +16,6 @@ const createMainWindow = async () => {
     },
   });
 
-  mainWindow.once("ready-to-show", () => {
-    mainWindow?.show();
-  });
-
   if (port) {
     mainWindow.loadURL(`http://localhost:${port}`);
 
@@ -27,6 +23,7 @@ const createMainWindow = async () => {
   } else {
     mainWindow.loadFile(path.join(__dirname, "../../ret/build/index.html"));
   }
+  mainWindow.on("close", () => (mainWindow = undefined));
 };
 
 app.on("ready", () => {
