@@ -27,22 +27,16 @@ const createMainWindow = async () => {
   } else {
     mainWindow.loadFile(path.join(__dirname, "../../ret/build/index.html"));
   }
-
-  ipcMain.on("helloWorld", (event, text: string) => {
-    console.log(text);
-  });
 };
 
 app.on("ready", () => {
   createMainWindow();
+
+  ipcMain.on("helloWorld", (event, text: string) => {
+    console.log(text);
+  });
 });
 
 app.on("window-all-closed", () => {
   app.quit();
-});
-
-app.on("activate", (): void => {
-  if (mainWindow === null) {
-    createMainWindow();
-  }
 });
