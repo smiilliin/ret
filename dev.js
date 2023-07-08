@@ -3,23 +3,30 @@ const net = require("net");
 
 const isPortOpen = (port) => {
   return new Promise((resolve) => {
-    const socket = new net.Socket();
+    // const socket = new net.();
+    const socket = new net.createServer();
 
-    socket.on("timeout", () => {
-      socket.destroy();
-      resolve(false);
-    });
+    // socket.on("timeout", () => {
+    //   socket.destroy();
+    //   resolve(false);
+    // });
 
     socket.on("error", (error) => {
-      if (error.code !== "ECONNREFUSED") resolve(false);
-      else resolve(true);
-    });
-    socket.on("connect", () => {
-      socket.destroy();
       resolve(false);
+      // if (error.code !== "ECONNREFUSED") resolve(false);
+      // else resolve(true);
     });
-    socket.connect(port, "127.0.0.1");
-    socket.setTimeout(500);
+    // socket.on("connect", () => {
+    //   socket.destroy();
+    //   resolve(false);
+    // });
+    socket.once("listening", function () {
+      socket.close();
+      resolve(true);
+    });
+    // socket.connect(port, "127.0.0.1");
+    // socket.setTimeout(500);
+    socket.listen(port);
   });
 };
 
