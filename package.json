@@ -21,6 +21,7 @@
   ],
   "build": {
     "productName": "ret",
+    "appId": "com.smiilliin.ret",
     "directories": {
       "output": "release/${platform}"
     },
