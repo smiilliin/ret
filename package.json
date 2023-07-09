@@ -32,8 +32,10 @@
       "artifactName": "${productName}.exe"
     },
     "mac": {
-      "target": "dmg",
-      "icon": "icon.ico",
+      "target": [
+        "dmg"
+      ],
+      "icon": "icon.icns",
       "artifactName": "${productName}.dmg"
     },
     "linux": {
