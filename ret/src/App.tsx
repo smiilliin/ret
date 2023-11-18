@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import icon from "./icon.svg";
 import "./App.css";
+import styled from "styled-components";
+
+const Container = styled.div`
+  text-align: center;
+`;
 
 function App() {
   useEffect(() => {
@@ -8,7 +13,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <Container>
       <header className="App-header">
         <img src={icon} className="App-logo" alt="logo" />
         <p>RET - React Electron Typescript</p>
@@ -21,7 +26,7 @@ function App() {
           smiilliin
         </a>
       </header>
-    </div>
+    </Container>
   );
 }
 

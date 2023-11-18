@@ -13,7 +13,7 @@
     "release:linux": "electron-builder build --linux",
     "release:all": "npm run release:win && npm run release:mac && npm run release:linux",
     "release": "electron-builder",
-    "postinstall": "cd ret && npm install --legacy-peer-deps"
+    "postinstall": "cd ret && npm install"
   },
   "build": {
     "productName": "ret",
