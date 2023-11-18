@@ -13,21 +13,33 @@
     "release:linux": "electron-builder build --linux",
     "release:all": "npm run release:win && npm run release:mac && npm run release:linux",
     "release": "electron-builder",
-    "postinstall": "cd ret && npm install"
+    "postinstall": "cd ret && npm install --legacy-peer-deps"
   },
-  "files": [
-    "electron/build/**/*",
-    "ret/build/**/*"
-  ],
   "build": {
     "productName": "ret",
+    "files": [
+      "!electron/**/*",
+      "!ret/**/*",
+      "!dev.js",
+      "!wait.js",
+      "!README.md",
+      "electron/build/**/*",
+      "ret/build/**/*"
+    ],
     "appId": "com.smiilliin.ret",
     "directories": {
       "output": "release/${platform}"
     },
     "asar": true,
     "win": {
-      "target": "portable",
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
       "icon": "icon.ico",
       "artifactName": "${productName}.exe"
     },
@@ -51,8 +63,9 @@
     "@types/wait-on": "^5.3.1",
     "concurrently": "^8.2.0",
     "cross-spawn": "^7.0.3",
-    "electron": "^25.2.0",
+    "electron": "^27.1.0",
     "electron-builder": "^24.4.0",
+    "eslint": "^8.54.0",
     "nodemon": "^2.0.22",
     "wait-on": "^7.0.1"
   }
